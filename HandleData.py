@@ -12,6 +12,7 @@ def handle(filename, stopword):
     wordlist = jieba.analyse.extract_tags(data, topK=70)
     wordStr = " ".join(wordlist)
     # 读取图片
+    fonts = './simfang.ttf'
     hand = np.array(Image.open('hand.jpg'))
     # 创建wordcloud对象
     my_cloudword = WordCloud(
@@ -20,6 +21,7 @@ def handle(filename, stopword):
         max_words = 300,              # 设置最大显示的字数
         stopwords = stopword,         # 设置停用词
         max_font_size = 60,            # 设置字体最大值
+        font_path= fonts               # 设置中文字体，以防止乱码
     )
     # 生成图片
     my_cloudword.generate(wordStr)
